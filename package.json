@@ -8,5 +8,9 @@
     "start": ""
   },
   "author": "Ernesto Diaz",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "assert": "^1.4.1",
+    "mongodb": "^3.0.10"
+  }
 }
