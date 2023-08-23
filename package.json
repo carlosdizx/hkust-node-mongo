@@ -17,5 +17,13 @@
     "@types/node": "^20.5.3",
     "ts-node": "^10.9.1",
     "typescript": "^5.1.6"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/carlosdizx/hkust-node-mongo.git"
+  },
+  "bugs": {
+    "url": "https://github.com/carlosdizx/hkust-node-mongo/issues"
+  },
+  "homepage": "https://github.com/carlosdizx/hkust-node-mongo#readme"
 }
