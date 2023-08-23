@@ -2,10 +2,10 @@
   "name": "node-mongo",
   "version": "1.0.0",
   "description": "Nodejs app with Mongodb example",
-  "main": "index.js",
+  "main": "app.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": ""
+    "start": "npx tsc && npx ts-node dist/app.js"
   },
   "author": "Ernesto Diaz",
   "license": "ISC",
