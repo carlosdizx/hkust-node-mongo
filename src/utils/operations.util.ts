@@ -1,7 +1,5 @@
 import { Db } from "mongodb";
 
-const uri = "mongodb://localhost:27017/";
-
 const insertDocument = async (
   db: Db,
   document: any,
@@ -25,12 +23,11 @@ const findDocuments = async (
 
 const removeDocument = async (
   db: Db,
-  document: any,
   collectionName: string,
   callback: Function
 ) => {
   const collection = db.collection(collectionName);
-  const result = await collection.deleteOne(document);
+  const result = await collection.drop();
   callback(result);
 };
 
@@ -42,7 +39,7 @@ const updateDocument = async (
   callback: Function
 ) => {
   const collection = db.collection(collectionName);
-  const result = collection.updateOne(document, {
+  const result = collection.updateMany(document, {
     $set: { ...updateDocument },
   });
   callback(result);
