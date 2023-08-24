@@ -2,47 +2,37 @@ import { Db } from "mongodb";
 
 const insertDocument = async (
   db: Db,
-  document: any,
-  collectionName: string,
-  callback: Function
+  document: object,
+  collectionName: string
 ) => {
   const collection = db.collection(collectionName);
-  const result = await collection.insertOne(document);
-  callback(result);
+  return await collection.insertOne(document);
 };
 
-const findDocuments = async (
-  db: Db,
-  collectionName: string,
-  callback: Function
-) => {
+const findDocuments = async (db: Db, collectionName: string) => {
   const collection = db.collection(collectionName);
-  const result = await collection.find().toArray();
-  callback(result);
+  return await collection.find().toArray();
 };
 
 const removeDocument = async (
   db: Db,
-  collectionName: string,
-  callback: Function
+  document: object,
+  collectionName: string
 ) => {
   const collection = db.collection(collectionName);
-  const result = await collection.drop();
-  callback(result);
+  return await collection.deleteOne(document);
 };
 
 const updateDocument = async (
   db: Db,
-  document: any,
-  updateDocument: any,
-  collectionName: string,
-  callback: Function
+  document: object,
+  updateDocument: object,
+  collectionName: string
 ) => {
   const collection = db.collection(collectionName);
-  const result = collection.updateMany(document, {
+  return collection.updateMany(document, {
     $set: { ...updateDocument },
   });
-  callback(result);
 };
 
 const operations = {
