@@ -8,39 +8,26 @@ const connectToMongo = async () => {
 
   try {
     await client.connect();
-    console.log("Conexión exitosa a MongoDB");
+    console.log("Connected to Mongo successfully");
     const db = client.db(dbName);
 
     await operations.insertDocument(
       db,
       { name: "Vadonut", description: "Test" },
-      "dishes",
-      async (data: any) => {
-        await operations.findDocuments(db, "dishes", async (data: any) => {
-          console.log(data);
-          await operations.updateDocument(
-            db,
-            { name: "Vadonut" },
-            { description: "Vadonut" },
-            "dishes",
-            async (result: any) => {
-              await operations.findDocuments(
-                db,
-                "dishes",
-                async (data: any) => {
-                  console.log(data);
-                  await operations.removeDocument(
-                    db,
-                    "dishes",
-                    async (result: any) => console.log(result)
-                  );
-                }
-              );
-            }
-          );
-        });
-      }
+      "dishes"
     );
+    await operations.findDocuments(db, "dishes");
+
+    await operations.updateDocument(
+      db,
+      { name: "Vadonut" },
+      { description: "Vadonut" },
+      "dishes"
+    );
+
+    await operations.findDocuments(db, "dishes");
+
+    await operations.removeDocument(db, { name: "Vadonut" }, "dishes");
   } catch (error) {
     console.error("Error in connect to MongoDB", error);
     throw error;
